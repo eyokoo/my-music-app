@@ -1,20 +1,23 @@
-import './App.css';
+import { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+
+import Dashboard from './components/Dashboard';
 import Login from './components/Login';
-import { Component } from 'react';
 
 export default class App extends Component {
 
   state = {
-    isLoggedIn: false
+    loggedIn : false
   };
 
   setLogin = (value) => {
-    this.setState({isLoggedIn: value});
+    this.setState({loggedIn : value});
   }
 
   render () {
+    const { loggedIn } = this.state;
+
     return (
       <div className="App">
       <AppBar position="static">
@@ -24,9 +27,9 @@ export default class App extends Component {
       </AppBar>
 
       {
-        !this.state.isLoggedIn
-        ? <Login onLogin={this.setLogin} />
-        : 'Add Dashboard component'
+        loggedIn 
+        ? <Dashboard />
+        : <Login onLogin={this.setLogin} />
       }
     </div>
     )

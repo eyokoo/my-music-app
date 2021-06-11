@@ -2,9 +2,14 @@ import { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
-import './style.css';
 
 const styles = theme => ({
+    loginContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        margin: '28px auto 0',
+        width: '300px'
+    },
     textField: {
         marginBottom: theme.spacing(2)
     }
@@ -12,10 +17,10 @@ const styles = theme => ({
 
 class Login extends Component {
     render() {
-       const { onLoginFunction, classes } = this.props;
+       const { onLogin, classes } = this.props;
 
         return (
-            <div className="login-container {}">
+            <div className={classes.loginContainer}>
                 <TextField
                     className={classes.textField}
                     label="Username"
@@ -27,7 +32,7 @@ class Login extends Component {
                     variant="outlined"
                 />
                 <Button variant="contained" color="primary"
-                    onClick={() => onLoginFunction(true)}>
+                    onClick={() => onLogin(true)}>
                     Login
                 </Button>
             </div>
